@@ -27,7 +27,7 @@ class Detector(object):
         self.sess = tf.Session()
         self.sess.run(tf.global_variables_initializer())
 
-        print 'Restoring weights from: ' + self.weights_file
+        print('Restoring weights from: ' + self.weights_file)
         self.saver = tf.train.Saver()
         self.saver.restore(self.sess, self.weights_file)
 
@@ -139,7 +139,7 @@ class Detector(object):
             detect_timer.tic()
             result = self.detect(frame)
             detect_timer.toc()
-            print 'Average detecting time: {:.3f}s'.format(detect_timer.average_time)
+            print('Average detecting time: {:.3f}s'.format(detect_timer.average_time))
 
             self.draw_result(frame, result)
             cv2.imshow('Camera', frame)
@@ -154,7 +154,7 @@ class Detector(object):
         detect_timer.tic()
         result = self.detect(image)
         detect_timer.toc()
-        print 'Average detecting time: {:.3f}s'.format(detect_timer.average_time)
+        print('Average detecting time: {:.3f}s'.format(detect_timer.average_time))
 
         self.draw_result(image, result)
         cv2.imshow('Image', image)

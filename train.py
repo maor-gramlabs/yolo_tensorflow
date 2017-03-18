@@ -51,7 +51,7 @@ class Solver(object):
         self.sess.run(tf.global_variables_initializer())
 
         if self.weights_file is not None:
-            print 'Restoring weights from: ' + self.weights_file
+            print('Restoring weights from: ' + self.weights_file)
             self.saver.restore(self.sess, self.weights_file)
 
         self.writer.add_graph(self.sess.graph)
@@ -61,7 +61,7 @@ class Solver(object):
         train_timer = Timer()
         load_timer = Timer()
 
-        for step in xrange(1, self.max_iter + 1):
+        for step in range(1, self.max_iter + 1):
 
             load_timer.tic()
             images, labels = self.data.get()
@@ -93,7 +93,7 @@ class Solver(object):
                         train_timer.average_time,
                         load_timer.average_time,
                         train_timer.remain(step, self.max_iter))
-                    print log_str
+                    print(log_str)
 
                 else:
                     train_timer.tic()
@@ -110,9 +110,9 @@ class Solver(object):
                 train_timer.toc()
 
             if step % self.save_iter == 0:
-                print '{} Saving checkpoint file to: {}'.format(
+                print('{} Saving checkpoint file to: {}'.format(
                     datetime.datetime.now().strftime('%m/%d %H:%M:%S'),
-                    self.output_dir)
+                    self.output_dir))
                 self.saver.save(self.sess, self.ckpt_file,
                     global_step=self.global_step)
 
